@@ -36,7 +36,7 @@ class CustomerTest {
                 "\t" + "Title" + "\t" + "\t" + "Days" + "\t" + "Amount" + "\n" +
                 "\t" + MOVIETITLE + "\t" + "\t" + RENTALDURATION + "\t" + 7.5 + "\n"+
                 "Amount owed is " + 7.5 + "\n" +
-                "You earned " + 1 + " frequent renter points.";
+                "You earned " + 1 + " frequent renter points";
 
                 assertEquals(statement, customer.statement());
     }
