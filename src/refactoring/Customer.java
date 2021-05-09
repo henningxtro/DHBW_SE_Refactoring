@@ -24,12 +24,12 @@ class Customer {
         while (enum_rentals.hasMoreElements()) {
             Rental each = (Rental) enum_rentals.nextElement();
             // add frequent renter points
-            frequentRenterPoints += each.getFrequentRenterPoints() ;
+            frequentRenterPoints += each.getMovie().getFrequentRenterPoints(each.getDaysRented()) ;
             // add bonus for a two day new release rental
 
             //show figures for this rental
-            result += "\t" + each.getMovie().getTitle()+ "\t" + "\t" + each.getDaysRented() + "\t" + String.valueOf(each.getCharge()) + "\n";
-            totalAmount += each.getCharge();
+            result += "\t" + each.getMovie().getTitle()+ "\t" + "\t" + each.getDaysRented() + "\t" + String.valueOf(each.getMovie().getCharge(each.getDaysRented())) + "\n";
+            totalAmount += each.getMovie().getCharge(each.getDaysRented());
         }
         //add footer lines
         result += "Amount owed is " + String.valueOf(getTotalCharge()) + "\n";
@@ -43,7 +43,7 @@ class Customer {
         while (rentals.hasMoreElements()) {
             Rental each = (Rental) rentals.nextElement();
             //show figures for each rental
-            result += each.getMovie().getTitle() + ": " + String.valueOf(each.getCharge()) + "<BR>\n";
+            result += each.getMovie().getTitle() + ": " + String.valueOf(each.getMovie().getCharge(each.getDaysRented())) + "<BR>\n";
         }
         //add footer lines
         result +=  "<P>You owe <EM>" + String.valueOf(getTotalCharge()) + "</EM><P>\n";
@@ -56,7 +56,7 @@ class Customer {
         Enumeration rentals = this.rentals.elements();
         while (rentals.hasMoreElements()) {
             Rental each = (Rental) rentals.nextElement();
-            result += each.getCharge();
+            result += each.getMovie().getCharge(each.getDaysRented());
         }
         return result;
     }
@@ -66,7 +66,7 @@ class Customer {
         Enumeration rentals = this.rentals.elements();
         while (rentals.hasMoreElements()) {
             Rental each = (Rental) rentals.nextElement();
-            result += each.getFrequentRenterPoints();
+            result += each.getMovie().getFrequentRenterPoints(each.getDaysRented());
         }
         return result;
     }
