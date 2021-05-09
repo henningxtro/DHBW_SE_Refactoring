@@ -39,15 +39,15 @@ class Customer {
 
     public String htmlStatement() {
         Enumeration rentals = this.rentals.elements();
-        String result = "<H1>Rentals for <EM>" + getName() + "</EM></H1><P>\n";
+        String result = "<h1>Rentals for <em>" + getName() + "</em></h1><p>\n";
         while (rentals.hasMoreElements()) {
             Rental each = (Rental) rentals.nextElement();
             //show figures for each rental
-            result += each.getMovie().getTitle() + ": " + String.valueOf(each.getMovie().getCharge(each.getDaysRented())) + "<BR>\n";
+            result += each.getMovie().getTitle() + ": " + String.valueOf(each.getMovie().getCharge(each.getDaysRented())) + "<br>\n";
         }
         //add footer lines
-        result +=  "<P>You owe <EM>" + String.valueOf(getTotalCharge()) + "</EM><P>\n";
-        result += "On this rental you earned <EM>" + String.valueOf(getTotalFrequentRenterPoints()) + "</EM> frequent renter points<P>";
+        result +=  "<p>You owe <em>" + String.valueOf(getTotalCharge()) + "</em><p>\n";
+        result += "On this rental you earned <em>" + String.valueOf(getTotalFrequentRenterPoints()) + "</em> frequent renter points<p>";
         return result;
     }
 

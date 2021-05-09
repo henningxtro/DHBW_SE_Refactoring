@@ -14,6 +14,4 @@ class Rental {
         return movie;
     }
 
-
-
 }
